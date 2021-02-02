@@ -16,12 +16,12 @@ L.tileLayer(
   }
 ).addTo(map);
 
-//Link to earthquake data as geo JSON
-var link =
+//link to earthquake data as geo JSON
+var queryURL =
   "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 //Use D3 to grab data
-d3.json(link, function (data) {
+d3.json(queryURL, function (data) {
   var dataFeatures = data.features;
 
   // loop through data and create attribute variables
@@ -96,7 +96,6 @@ legend.onAdd = function (map) {
 
   div.innerHTML += "Magnitude<br><hr>";
 
-  // loop through our density intervals and generate a label with a colored square for each interval
   for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
       '<i style="background:' +
